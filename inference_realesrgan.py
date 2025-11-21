@@ -18,8 +18,8 @@ def main():
         '-n',
         '--model_name',
         type=str,
-        default='ExReal-ESRGAN',
-        help=('Model names: ExReal-ESRGAN | ExReal-ESRNet | RealESRGAN_x4plus | RealESRNet_x4plus | RealESRGAN_x4plus_anime_6B | RealESRGAN_x2plus | '
+        default='SEM-GAN',
+        help=('Model names: SEM-GAN | SEM-ESRNet | RealESRGAN_x4plus | RealESRNet_x4plus | RealESRGAN_x4plus_anime_6B | RealESRGAN_x2plus | '
               'realesr-animevideov3 | realesr-general-x4v3'))
     parser.add_argument('-o', '--output', type=str, default='results', help='Output folder')
     parser.add_argument(
@@ -56,14 +56,14 @@ def main():
 
     # determine models according to model names
     args.model_name = args.model_name.split('.')[0]
-    if args.model_name == 'ExReal-ESRGAN':
+    if args.model_name == 'SEM-GAN':
         model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=4)
         netscale = 4
-        file_url = ['https://github.com/nguyendotruong/ExReal-ESRGAN/releases/download/v1/ExReal-ESRGAN.pth']
-    elif args.model_name == 'ExReal-ESRNet':
+        file_url = ['SEM-GAN.pth']
+    elif args.model_name == 'SEM-ESRNet':
         model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=4)
         netscale = 4
-        file_url = ['https://github.com/nguyendotruong/ExReal-ESRGAN/releases/download/v1/ExReal-ESRNet.pth']
+        file_url = ['SEM-ESRNet.pth']
     elif args.model_name == 'RealESRGAN_x4plus':  # x4 RRDBNet model
         model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=4)
         netscale = 4
